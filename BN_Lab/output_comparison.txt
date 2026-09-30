@@ -1,0 +1,14 @@
+vocabulary (incl <END>): 11
+nonzero parameters : 1st=17  2nd=19
+contexts observed  : 1st=11/11  2nd=15/121
+zero-prob contexts : 1st=0  2nd=106
+full-table size (|ctx| x |V|): 1st=121  2nd=1331
+training sentences (unique): 6
+1st-order, 1000 samples: unique=171, unseen-in-training=165
+     novel: the cat ran to the cat ran to the cat ran to the park
+     novel: the cat ran to the cat ran to the cat sat on the cat sat on the park
+     novel: the cat ran to the cat ran to the dog ran to the rug
+     novel: the cat ran to the cat ran to the mat
+     novel: the cat ran to the cat ran to the park
+     novel: the cat ran to the cat ran to the rug
+2nd-order, 1000 samples: unique=6, unseen-in-training=0

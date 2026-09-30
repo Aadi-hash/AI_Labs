@@ -1,0 +1,81 @@
+=== Selected CPTs ===
+P(next | <START>, <START>):
+    the      1.0000
+P(next | <START>, the):
+    cat      0.5000
+    dog      0.5000
+P(next | the, cat):
+    sat      0.6667
+    ran      0.3333
+P(next | the, dog):
+    sat      0.6667
+    ran      0.3333
+P(next | cat, sat):
+    on       1.0000
+P(next | dog, sat):
+    on       1.0000
+P(next | sat, on):
+    the      1.0000
+P(next | on, the):
+    mat      0.5000
+    rug      0.5000
+P(next | ran, to):
+    the      1.0000
+P(next | to, the):
+    park     1.0000
+
+=== Normalisation test ===
+  ('<START>', '<START>')       sum = 1.000000  OK
+  ('<START>', 'the')           sum = 1.000000  OK
+  ('cat', 'ran')               sum = 1.000000  OK
+  ('cat', 'sat')               sum = 1.000000  OK
+  ('dog', 'ran')               sum = 1.000000  OK
+  ('dog', 'sat')               sum = 1.000000  OK
+  ('on', 'the')                sum = 1.000000  OK
+  ('ran', 'to')                sum = 1.000000  OK
+  ('sat', 'on')                sum = 1.000000  OK
+  ('the', 'cat')               sum = 1.000000  OK
+  ('the', 'dog')               sum = 1.000000  OK
+  ('the', 'mat')               sum = 1.000000  OK
+  ('the', 'park')              sum = 1.000000  OK
+  ('the', 'rug')               sum = 1.000000  OK
+  ('to', 'the')                sum = 1.000000  OK
+All contexts sum to 1: True
+
+=== Unseen context example ===
+P(next | cat, park):  NO OBSERVED TRANSITIONS
+
+=== 20 sampled sentences ===
+   the cat sat on the rug
+   the cat sat on the mat
+   the dog sat on the mat
+   the cat sat on the mat
+   the dog ran to the park
+   the dog sat on the rug
+   the cat sat on the mat
+   the cat sat on the rug
+   the dog sat on the rug
+   the dog ran to the park
+   the dog ran to the park
+   the cat sat on the rug
+   the cat ran to the park
+   the dog sat on the rug
+   the dog sat on the rug
+   the cat sat on the rug
+   the cat ran to the park
+   the dog sat on the mat
+   the dog ran to the park
+   the cat sat on the rug
+
+=== Greedy (5) ===
+   the cat sat on the mat
+   the cat sat on the mat
+   the cat sat on the mat
+   the cat sat on the mat
+   the cat sat on the mat
+=== Sampling (5) ===
+   the dog sat on the mat
+   the cat sat on the mat
+   the cat sat on the mat
+   the cat ran to the park
+   the cat ran to the park

@@ -1,0 +1,96 @@
+=== Conditional probability tables ===
+P(next | <START>):
+    the      1.0000
+P(next | the):
+    cat      0.2500
+    dog      0.2500
+    mat      0.1667
+    rug      0.1667
+    park     0.1667
+P(next | cat):
+    sat      0.6667
+    ran      0.3333
+P(next | dog):
+    sat      0.6667
+    ran      0.3333
+P(next | sat):
+    on       1.0000
+P(next | ran):
+    to       1.0000
+P(next | on):
+    the      1.0000
+P(next | to):
+    the      1.0000
+P(next | mat):
+    <END>    1.0000
+P(next | rug):
+    <END>    1.0000
+P(next | park):
+    <END>    1.0000
+
+=== Zero-probability transitions (words in vocab, per context) ===
+  after 'the': ['<END>', 'on', 'ran', 'sat', 'the', 'to']
+  after 'cat': ['<END>', 'cat', 'dog', 'mat', 'on', 'park', 'rug', 'the', 'to']
+  after 'dog': ['<END>', 'cat', 'dog', 'mat', 'on', 'park', 'rug', 'the', 'to']
+  after 'sat': ['<END>', 'cat', 'dog', 'mat', 'park', 'ran', 'rug', 'sat', 'the', 'to']
+  after 'ran': ['<END>', 'cat', 'dog', 'mat', 'on', 'park', 'ran', 'rug', 'sat', 'the']
+
+=== Normalisation test ===
+  <START>  sum P(v|w) = 1.000000  OK
+  cat      sum P(v|w) = 1.000000  OK
+  dog      sum P(v|w) = 1.000000  OK
+  mat      sum P(v|w) = 1.000000  OK
+  on       sum P(v|w) = 1.000000  OK
+  park     sum P(v|w) = 1.000000  OK
+  ran      sum P(v|w) = 1.000000  OK
+  rug      sum P(v|w) = 1.000000  OK
+  sat      sum P(v|w) = 1.000000  OK
+  the      sum P(v|w) = 1.000000  OK
+  to       sum P(v|w) = 1.000000  OK
+All rows sum to 1: True
+
+=== Next-word prediction (argmax) ===
+  argmax P(. | <START>) = the
+  argmax P(. | the) = cat
+  argmax P(. | cat) = sat
+  argmax P(. | dog) = sat
+  argmax P(. | sat) = on
+  argmax P(. | ran) = to
+  argmax P(. | on) = the
+  argmax P(. | to) = the
+
+=== 20 sampled sentences ===
+   the cat sat on the dog ran to the cat sat on the cat sat on the dog ran to
+   the dog sat on the mat
+   the park
+   the dog sat on the rug
+   the park
+   the cat sat on the cat sat on the mat
+   the mat
+   the dog sat on the mat
+   the rug
+   the dog sat on the mat
+   the park
+   the mat
+   the mat
+   the mat
+   the mat
+   the rug
+   the cat sat on the cat sat on the park
+   the dog ran to the dog sat on the park
+   the rug
+   the park
+
+=== Greedy (Mode A), 5 sentences ===
+   the cat sat on the cat sat on the cat sat on the cat sat on the cat sat on
+   the cat sat on the cat sat on the cat sat on the cat sat on the cat sat on
+   the cat sat on the cat sat on the cat sat on the cat sat on the cat sat on
+   the cat sat on the cat sat on the cat sat on the cat sat on the cat sat on
+   the cat sat on the cat sat on the cat sat on the cat sat on the cat sat on
+
+=== Sampling (Mode B), 5 sentences ===
+   the dog sat on the dog sat on the cat ran to the mat
+   the park
+   the cat ran to the rug
+   the park
+   the rug
